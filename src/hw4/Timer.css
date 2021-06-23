@@ -1,0 +1,49 @@
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.timer{
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons{
+    display: flex;
+}
+button{
+    margin: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    width: 100px;
+    color: #fff;
+    background-color: rebeccapurple;
+}
+button[disabled]{
+    background-color: rgb(112, 109, 109);
+}
+.start{
+    background-color: green;
+}
+.stop{
+    background-color: red;
+}
+.reset{
+    background-color: orange;
+}
+.continue{
+    background-color: rebeccapurple;
+}
+.times_array{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
