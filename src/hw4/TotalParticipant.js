@@ -10,8 +10,7 @@ const TotalParticipant = ()=>{
 
     const HandelShow = ()=>{
         dispatch(Winner());
-        if(winner !== null) dispatch(ShowWinner(true));
-        else alert('Winner not found!!!');
+        dispatch(ShowWinner(true));
     }
 
     const Winner = () =>{
@@ -32,16 +31,15 @@ const TotalParticipant = ()=>{
         !showWinner ? <>
             <p>Total Participant: {participants.length}</p>
             <button onClick={HandelShow}>Show winner</button>
-        </> : <>{(()=>{
-                if(winner) return <>
+        </> : <>{
+                (winner) ? <>
                     <p>The Winner</p>
                     <div className='participant'>
                         <p>ID: {winner.id}</p>
                         <p>Name: {winner.name}</p>
                         <p>Time: {winner.time}</p>
                     </div>
-                    </>
-                })()
+                    </> : <div>Winner not found</div>
             }
         </>
     }

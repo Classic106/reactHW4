@@ -2,7 +2,7 @@ const InitialState = {
   showWinner: false,
 };
 
-const reducer = function (state = InitialState, action) {
+const reducer = function (state = InitialState, action){
   switch (action.type) {
     case "SHOW_WINNER":
       return { ...state, showWinner: action.payload };
