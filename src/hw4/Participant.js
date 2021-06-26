@@ -10,12 +10,6 @@ const Participant = ({ participant })=>{
             payload: id,
         }
     }
-    
-    const Winner = () =>{
-        return {
-            type: 'WINNER',
-        }
-    }
 
     return(
     <div className='participant'>
@@ -24,7 +18,6 @@ const Participant = ({ participant })=>{
         <p>Time: {participant.time}</p>
         <button onClick={()=>{
             dispatch(DeletePatricipant(participant.id));
-            dispatch(Winner());
         }}>Delete</button>
     </div>);
 }

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Timer from '../hw4/Timer';
 
 const Registration = ()=>{
     
-    const showWinner = useSelector(store => store.showWinner.showWinner);
     const dispatch = useDispatch();
     
     const [registered, setRegistered] = useState(false);
@@ -13,13 +12,6 @@ const Registration = ()=>{
     const [time, setTime] = useState('');
     const [disabledCancel, setDisabledCancel] = useState(false);
     const [disabledSave, setDisabledSave] = useState(true);
-
-
-    const Winner = () =>{
-        return {
-            type: 'WINNER',
-        }
-    }
 
     const RegisterParticipant = (participant)=>{
     
@@ -29,22 +21,21 @@ const Registration = ()=>{
         }
     };
 
-    const HandelSave = ()=>{
+    const HandleSave = ()=>{
         if(time.length > 0) {
             const p = {...participant, time};
                 dispatch(RegisterParticipant(p));
                 setRegistered(false);
                 setParticipant({});
-            if(showWinner) dispatch(Winner());
         }else console.log('not time');
     };
 
-    const HandelCancel = ()=>{
+    const HandleCancel = ()=>{
         setParticipant({});
         setRegistered(false);
     };
 
-    const HandelSubmit = (e)=>{
+    const HandleSubmit = (e)=>{
         
         e.preventDefault();
 
@@ -69,7 +60,7 @@ const Registration = ()=>{
     return(
     <div className='registration'>{
         !registered ?
-        <form onSubmit={HandelSubmit} className='registeredForm'>
+        <form onSubmit={HandleSubmit} className='registeredForm'>
             <input
                 type='text'
                 name='name'
@@ -93,12 +84,12 @@ const Registration = ()=>{
             <div className='buttons'>
                 <button
                     className='continue'
-                    onClick={HandelCancel}
+                    onClick={HandleCancel}
                     disabled={disabledCancel}
                 >Cancel</button>
                 <button
                     className='continue'
-                    onClick={HandelSave}
+                    onClick={HandleSave}
                     disabled={disabledSave}
                 >Save</button>
             </div>

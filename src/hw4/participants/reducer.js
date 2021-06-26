@@ -1,10 +1,7 @@
-import { SetLocalStorage } from '../helpers/helpers.js';
-import { GetLocalStorage } from '../helpers/helpers.js';
-import { TimeToDigit } from "../helpers/helpers.js";
+import { SetLocalStorage, GetLocalStorage } from '../helpers/helpers.js';
 
 const InitialState = {
   participants: GetLocalStorage('participants'),
-  winner: null,
 };
 
 const reducer = function(state = InitialState, action) {
@@ -29,13 +26,6 @@ const reducer = function(state = InitialState, action) {
           });
         SetLocalStorage('participants', newParticipants);
         return {...state, participants: newParticipants};
-      }
-      case "WINNER": {
-        const winner = [...state.participants].sort((a, b) => {
-          return TimeToDigit(a.time) - TimeToDigit(b.time);
-        });
-        if(winner.length === 0) return state;
-        return { ...state, winner: winner[0] };
       }
       default: return state;
     }

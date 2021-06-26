@@ -26,7 +26,7 @@ const TimeToString = (val, to)=>{
         `${strHours}:${strMinutes}:${strSeconds}`;
 }
 const TimeToDigit = (val)=>{
-
+    
     return val.split(':').reduce((acc, curval, index, arr)=>{
         
         if(arr.length === 1) {
