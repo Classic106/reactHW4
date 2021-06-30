@@ -3,6 +3,8 @@
 }
 .main{
     display: flex;
+    max-width: 1024px;
+    margin: 30px auto;
 }
 .left{
     display: flex;

@@ -1,4 +1,4 @@
-import { SetLocalStorage, GetLocalStorage } from '../helpers/helpers.js';
+import { GetLocalStorage } from '../helpers/helpers.js';
 
 const InitialState = {
   participants: GetLocalStorage('participants'),
@@ -16,7 +16,6 @@ const reducer = function(state = InitialState, action) {
 
         let newParticipants = [...state.participants];
           newParticipants.push(action.payload);
-          SetLocalStorage('participants', newParticipants);
         return {...state, participants: newParticipants};
       }
       case "REMOVE_PARTICIPANT": {
@@ -24,7 +23,6 @@ const reducer = function(state = InitialState, action) {
             if(item.id !== +action.payload) return item;
             return false;
           });
-        SetLocalStorage('participants', newParticipants);
         return {...state, participants: newParticipants};
       }
       default: return state;
